@@ -35,6 +35,7 @@ export interface Stratagem {
   name: string;
   cost: string;
   category?: string;
+  icon?: string;
   flavorText: string;
   when: string;
   target: string;

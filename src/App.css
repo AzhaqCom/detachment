@@ -68,6 +68,7 @@
 .detachment-card {
   --accent: var(--gold);
   text-align: left;
+  text-decoration: none;
   background: linear-gradient(180deg, var(--panel), var(--panel-alt));
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
@@ -132,45 +133,31 @@
   padding-top: 10px;
 }
 
-/* Detail overlay */
+/* Detail page */
 
-.detail-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(4, 5, 7, 0.75);
-  backdrop-filter: blur(2px);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 16px;
-  overflow-y: auto;
-  z-index: 50;
+.back-link {
+  display: inline-block;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  transition: color 0.15s ease;
 }
 
-.detail-panel {
+.back-link:hover {
+  color: var(--gold);
+}
+
+.detail-page {
   --accent: var(--gold);
-  position: relative;
   background: var(--panel);
   border: 1px solid var(--border);
   border-top: 4px solid var(--accent);
   border-radius: 12px;
   max-width: 980px;
   width: 100%;
+  margin: 0 auto;
   padding: 32px 32px 48px;
-}
-
-.detail-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--panel-alt);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 6px;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  font-size: 1rem;
 }
 
 .detail-header__badges {
@@ -255,16 +242,14 @@
   gap: 14px;
 }
 
-.enhancement-card,
-.stratagem-card {
+.enhancement-card {
   background: var(--panel-alt);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 14px 16px;
 }
 
-.enhancement-card__top,
-.stratagem-card__top {
+.enhancement-card__top {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -272,26 +257,16 @@
   margin-bottom: 6px;
 }
 
-.enhancement-card__top h3,
-.stratagem-card__top h3 {
+.enhancement-card__top h3 {
   font-size: 0.98rem;
   color: var(--text);
 }
 
-.points,
-.cp {
+.points {
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--accent);
   white-space: nowrap;
-}
-
-.category {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-dim);
-  margin-bottom: 8px;
 }
 
 .weapon-table {
@@ -313,25 +288,114 @@
   text-align: left;
 }
 
-.stratagem-card dl {
-  margin: 8px 0 0;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4px 10px;
-  font-size: 0.84rem;
+/* Stratagem card */
+
+.stratagem-card {
+  --cat-color: #454b5c;
+  display: flex;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.stratagem-card dt {
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.72rem;
+.stratagem-card__stripe {
+  width: 10px;
+  flex-shrink: 0;
+  background: var(--cat-color);
+}
+
+.stratagem-card__body {
+  flex-grow: 1;
+  padding: 14px 16px;
+  min-width: 0;
+}
+
+.stratagem-card__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.stratagem-card__title-row h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
-  align-self: start;
-  padding-top: 2px;
+  color: var(--text);
 }
 
-.stratagem-card dd {
-  margin: 0;
-  color: var(--text);
-  line-height: 1.45;
+.stratagem-card__cost {
+  flex-shrink: 0;
+  background: #0b0d12;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.stratagem-card__band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--cat-color);
+  color: #fff;
+  margin: 8px -16px 10px;
+  padding: 4px 16px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stratagem-card__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stratagem-icon__glyph {
+  width: 14px;
+  height: 14px;
+  color: #fff;
+}
+
+.stratagem-card__flavor {
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 0.83rem;
+  line-height: 1.4;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.stratagem-card__field {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stratagem-card__field:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stratagem-card__field strong {
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.stratagem-card__restrictions {
+  color: #d99a4a;
+  font-size: 0.78rem;
 }

@@ -1,11 +1,7 @@
-import { useEffect } from "react";
-import type { Detachment } from "../types/detachment";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { DETACHMENTS } from "../data/detachments";
 import { OBJECTIVE_MAP } from "../data/objectives";
-
-interface Props {
-  detachment: Detachment;
-  onClose: () => void;
-}
+import { StratagemCard } from "../components/StratagemCard";
 
 function TextBlock({ text }: { text: string }) {
   const paragraphs = text.split("\n").filter(Boolean);
@@ -18,36 +14,32 @@ function TextBlock({ text }: { text: string }) {
   );
 }
 
-export function DetachmentDetail({ detachment, onClose }: Props) {
+export function DetachmentPage() {
+  const { id } = useParams();
+  const detachment = DETACHMENTS.find((d) => d.id === id);
+
+  if (!detachment) {
+    return <Navigate to="/" replace />;
+  }
+
   const objective = OBJECTIVE_MAP[detachment.primaryObjective];
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
   return (
-    <div className="detail-overlay" onClick={onClose}>
-      <div
-        className="detail-panel"
-        style={{ ["--accent" as string]: objective.color }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button className="detail-close" onClick={onClose} aria-label="Fermer">
-          ✕
-        </button>
+    <div className="app">
+      <Link to="/" className="back-link">
+        ← Tous les détachements
+      </Link>
 
+      <div
+        className="detail-page"
+        style={{ ["--accent" as string]: objective.color }}
+      >
         <header className="detail-header">
           <div className="detail-header__badges">
             <span className="badge badge--objective">{objective.label}</span>
-            <span className="badge badge--dp">{detachment.detachmentPoints} DP</span>
+            <span className="badge badge--dp">
+              {detachment.detachmentPoints} DP
+            </span>
           </div>
           <h1>{detachment.name}</h1>
           <p className="detail-tagline">{detachment.tagline}</p>
@@ -127,31 +119,11 @@ export function DetachmentDetail({ detachment, onClose }: Props) {
             <h2>Stratagèmes ({detachment.stratagems.length})</h2>
             <div className="stratagem-grid">
               {detachment.stratagems.map((strat) => (
-                <div className="stratagem-card" key={strat.name}>
-                  <div className="stratagem-card__top">
-                    <h3>{strat.name}</h3>
-                    <span className="cp">{strat.cost}</span>
-                  </div>
-                  {strat.category && (
-                    <p className="category">
-                      {strat.category === detachment.name
-                        ? `${detachment.name} Stratagem`
-                        : `${detachment.name} — ${strat.category} Stratagem`}
-                    </p>
-                  )}
-                  <p className="flavor">{strat.flavorText}</p>
-                  <dl>
-                    <dt>WHEN</dt>
-                    <dd>{strat.when}</dd>
-                    <dt>TARGET</dt>
-                    <dd>{strat.target}</dd>
-                    <dt>EFFECT</dt>
-                    <dd>{strat.effect}</dd>
-                  </dl>
-                  {strat.restrictions && (
-                    <p className="restriction">{strat.restrictions}</p>
-                  )}
-                </div>
+                <StratagemCard
+                  key={strat.name}
+                  stratagem={strat}
+                  detachmentName={detachment.name}
+                />
               ))}
             </div>
           </section>
