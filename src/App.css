@@ -1,0 +1,337 @@
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.app-header h1 {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #f2e4b8, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-subtitle {
+  color: var(--text-dim);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.objective-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.objective-filter label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.objective-filter select {
+  background: var(--panel-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+}
+
+.objective-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.detachment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.detachment-card {
+  --accent: var(--gold);
+  text-align: left;
+  background: linear-gradient(180deg, var(--panel), var(--panel-alt));
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 18px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.detachment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  border-color: var(--accent);
+}
+
+.detachment-card__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.badge--objective {
+  background: var(--accent);
+  color: #0b0d12;
+}
+
+.badge--dp {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.detachment-card__name {
+  font-size: 1.25rem;
+}
+
+.detachment-card__tagline {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.detachment-card__footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+/* Detail overlay */
+
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 5, 7, 0.75);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.detail-panel {
+  --accent: var(--gold);
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 12px;
+  max-width: 980px;
+  width: 100%;
+  padding: 32px 32px 48px;
+}
+
+.detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.detail-header__badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.detail-header h1 {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+.detail-tagline {
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 6px;
+}
+
+.detail-description {
+  margin-top: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 0.94rem;
+}
+
+.detail-restrictions {
+  margin-top: 12px;
+  color: #d99a4a;
+  font-size: 0.85rem;
+  border-left: 3px solid #d99a4a;
+  padding-left: 10px;
+}
+
+.detail-section {
+  margin-top: 32px;
+}
+
+.detail-section > h2 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.rule-block {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.rule-block h3 {
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.flavor {
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.restriction {
+  font-size: 0.82rem;
+  color: #8fb3d9;
+  margin-bottom: 6px;
+}
+
+.enhancement-grid,
+.stratagem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.enhancement-card,
+.stratagem-card {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.enhancement-card__top,
+.stratagem-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.enhancement-card__top h3,
+.stratagem-card__top h3 {
+  font-size: 0.98rem;
+  color: var(--text);
+}
+
+.points,
+.cp {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.weapon-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.82rem;
+}
+
+.weapon-table th,
+.weapon-table td {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.weapon-table th:first-child,
+.weapon-table td:first-child {
+  text-align: left;
+}
+
+.stratagem-card dl {
+  margin: 8px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  font-size: 0.84rem;
+}
+
+.stratagem-card dt {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  align-self: start;
+  padding-top: 2px;
+}
+
+.stratagem-card dd {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.45;
+}
