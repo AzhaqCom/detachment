@@ -1,32 +1,22 @@
-# React + TypeScript + Vite
+# Détachements Space Marines
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site listant les 16 détachements du Faction Pack Space Marines (Warhammer 40,000), avec filtrage par objectif primaire et vue détaillée (règle d'armée, améliorations, stratagèmes) pour chaque détachement.
 
-Currently, two official plugins are available:
+Stack : React + TypeScript + Vite. Données dans [`src/data/detachments.ts`](src/data/detachments.ts).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Développement
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build
+
+```bash
+npm run build
+```
+
+## Déploiement
+
+Le déploiement sur GitHub Pages se fait automatiquement via GitHub Actions (voir `.github/workflows/deploy.yml`) à chaque push sur `main`. Il faut activer GitHub Pages sur le repo avec la source "GitHub Actions" (Settings > Pages).
