@@ -56,7 +56,6 @@ export function DetachmentPage() {
           {detachment.rules.map((rule) => (
             <div className="rule-block" key={rule.name}>
               <h3>{rule.name}</h3>
-              {rule.flavorText && <p className="flavor">{rule.flavorText}</p>}
               <TextBlock text={rule.effect} />
             </div>
           ))}
@@ -77,7 +76,6 @@ export function DetachmentPage() {
                   <h3>{enh.name}</h3>
                   <span className="points">{enh.points} pts</span>
                 </div>
-                <p className="flavor">{enh.flavorText}</p>
                 <p className="restriction">{enh.restriction}</p>
                 {enh.effect && <TextBlock text={enh.effect} />}
                 {enh.weaponProfile && (

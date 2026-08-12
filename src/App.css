@@ -222,13 +222,6 @@
   margin-bottom: 6px;
 }
 
-.flavor {
-  font-style: italic;
-  color: var(--text-dim);
-  font-size: 0.85rem;
-  margin-bottom: 8px;
-}
-
 .restriction {
   font-size: 0.82rem;
   color: #8fb3d9;
@@ -366,15 +359,6 @@
   width: 14px;
   height: 14px;
   color: #fff;
-}
-
-.stratagem-card__flavor {
-  font-style: italic;
-  color: var(--text-dim);
-  font-size: 0.83rem;
-  line-height: 1.4;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
 }
 
 .stratagem-card__field {

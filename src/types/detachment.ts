@@ -18,13 +18,11 @@ export interface WeaponProfile {
 
 export interface DetachmentRule {
   name: string;
-  flavorText?: string;
   effect: string;
 }
 
 export interface Enhancement {
   name: string;
-  flavorText: string;
   restriction: string;
   effect: string;
   points: number;
@@ -36,7 +34,6 @@ export interface Stratagem {
   cost: string;
   category?: string;
   icon?: string;
-  flavorText: string;
   when: string;
   target: string;
   effect: string;
@@ -55,5 +52,5 @@ export interface Detachment {
   keywordsNote?: string;
   enhancements: Enhancement[];
   stratagems: Stratagem[];
-  page: number;
+  page?: number;
 }

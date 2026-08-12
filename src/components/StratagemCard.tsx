@@ -29,8 +29,6 @@ export function StratagemCard({ stratagem, detachmentName }: Props) {
           </span>
         </div>
 
-        <p className="stratagem-card__flavor">{stratagem.flavorText}</p>
-
         <div className="stratagem-card__field">
           <strong>WHEN:</strong> {stratagem.when}
         </div>
