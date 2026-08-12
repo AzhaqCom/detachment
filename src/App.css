@@ -25,25 +25,32 @@
   font-size: 0.95rem;
 }
 
-.objective-filter {
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.filter {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 24px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 8px 14px;
 }
 
-.objective-filter label {
+.filter label {
   font-size: 0.85rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.objective-filter select {
+.filter select {
   background: var(--panel-alt);
   color: var(--text);
   border: 1px solid var(--border);
@@ -57,6 +64,12 @@
   height: 12px;
   border-radius: 50%;
   border: 1px solid var(--border);
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 40px 0;
 }
 
 .detachment-grid {

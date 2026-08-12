@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import type { Detachment } from "../types/detachment";
 import { OBJECTIVE_MAP } from "../data/objectives";
+import type { FactionId } from "../data/factions";
 
 interface Props {
   detachment: Detachment;
+  factionId: FactionId;
 }
 
-export function DetachmentCard({ detachment }: Props) {
+export function DetachmentCard({ detachment, factionId }: Props) {
   const objective = OBJECTIVE_MAP[detachment.primaryObjective];
 
   return (
     <Link
       className="detachment-card"
       style={{ ["--accent" as string]: objective.color }}
-      to={`/${detachment.id}`}
+      to={`/${factionId}/${detachment.id}`}
     >
       <div className="detachment-card__badges">
         <span className="badge badge--objective">{objective.label}</span>

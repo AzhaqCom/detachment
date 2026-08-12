@@ -1,6 +1,11 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { DETACHMENTS } from "../data/detachments";
 import { OBJECTIVE_MAP } from "../data/objectives";
+import {
+  DEFAULT_FACTION,
+  isFactionId,
+  type FactionId,
+} from "../data/factions";
+import { useDetachments } from "../hooks/useDetachments";
 import { StratagemCard } from "../components/StratagemCard";
 
 function TextBlock({ text }: { text: string }) {
@@ -15,18 +20,30 @@ function TextBlock({ text }: { text: string }) {
 }
 
 export function DetachmentPage() {
-  const { id } = useParams();
-  const detachment = DETACHMENTS.find((d) => d.id === id);
+  const { factionId: param, id } = useParams();
+  const known = isFactionId(param);
+  const factionId: FactionId = known ? param : DEFAULT_FACTION;
+  const detachments = useDetachments(factionId);
+
+  if (!known) {
+    return <Navigate to="/" replace />;
+  }
+
+  if (detachments === null) {
+    return <p className="loading">Chargement du détachement…</p>;
+  }
+
+  const detachment = detachments.find((d) => d.id === id);
 
   if (!detachment) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={`/${factionId}`} replace />;
   }
 
   const objective = OBJECTIVE_MAP[detachment.primaryObjective];
 
   return (
     <div className="app">
-      <Link to="/" className="back-link">
+      <Link to={`/${factionId}`} className="back-link">
         ← Tous les détachements
       </Link>
 

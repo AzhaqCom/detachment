@@ -1,4 +1,4 @@
-import type { Detachment, Stratagem } from "../types/detachment";
+import type { Detachment, Stratagem } from "../../types/detachment";
 
 const ARMOUR_OF_CONTEMPT_RULE = (): Stratagem => ({
   name: "Armour of Contempt",

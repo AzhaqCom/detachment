@@ -8,7 +8,7 @@ interface Props {
 
 export function ObjectiveFilter({ value, onChange }: Props) {
   return (
-    <div className="objective-filter">
+    <div className="filter">
       <label htmlFor="objective-select">Objectif primaire</label>
       <select
         id="objective-select"
