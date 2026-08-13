@@ -13,6 +13,11 @@ export const FACTIONS = [
     name: "Space Marines",
     load: () => import("./factions/space-marines").then((m) => m.DETACHMENTS),
   },
+  {
+    id: "dark-angels",
+    name: "Dark Angels",
+    load: () => import("./factions/dark-angels").then((m) => m.DETACHMENTS),
+  },
 ] as const satisfies readonly FactionInfo[];
 
 export type FactionId = (typeof FACTIONS)[number]["id"];
