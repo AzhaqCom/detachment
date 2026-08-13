@@ -23,6 +23,11 @@ export const FACTIONS = [
     name: "Orks",
     load: () => import("./factions/orks").then((m) => m.DETACHMENTS),
   },
+  {
+    id: "tyranids",
+    name: "Tyranids",
+    load: () => import("./factions/tyranids").then((m) => m.DETACHMENTS),
+  },
 ] as const satisfies readonly FactionInfo[];
 
 export type FactionId = (typeof FACTIONS)[number]["id"];
