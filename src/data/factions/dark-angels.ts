@@ -387,4 +387,300 @@ export const DETACHMENTS: Detachment[] = [
       },
     ],
   },
+  {
+    id: "company-of-hunters",
+    name: "Company of Hunters",
+    tagline:
+      "Ravenwing outriders who never stop moving, firing on the advance and breaking away before the foe can answer.",
+    primaryObjective: "disruption",
+    detachmentPoints: 2,
+    restrictions: CHAPTER_RESTRICTION,
+    keywordsNote:
+      "OUTRIDER SQUAD units from your army gain the BATTLELINE keyword.",
+    rules: [
+      {
+        name: "Masters of Manoeuvre",
+        effect:
+          "Friendly ADEPTUS ASTARTES have:\nThis unit's ranged attacks have [ASSAULT].\nWhen this unit is selected to make a fall-back move, that fall-back move does not prevent this unit from being eligible to shoot.\nFriendly ADEPTUS ASTARTES MOUNTED have:\nThis unit's ranged attacks have [ASSAULT].\nWhen this unit is selected to make an advance move, that advance move does not prevent this unit from being eligible to declare a charge.\nWhen this unit is selected to make a fall-back move, that fall-back move does not prevent this unit from being eligible to shoot and eligible to declare a charge.",
+      },
+    ],
+    enhancements: [
+      {
+        name: "Master of Manoeuvre",
+        restriction: "RAVENWING model only.",
+        effect:
+          "If the bearer's unit starts the battle in Strategic Reserves, its points value does not count towards the combined points limit for units from your army that are in Strategic Reserve, and for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is.",
+        points: 15,
+      },
+      {
+        name: "Master-crafted Weapon",
+        restriction: "RAVENWING model only.",
+        effect:
+          "Melee weapons equipped by the bearer have the [PRECISION] ability.",
+        points: 10,
+      },
+      {
+        name: "Mounted Strategist",
+        restriction: "RAVENWING model only.",
+        effect:
+          "You can re-roll Advance and Charge rolls made for the bearer's unit.",
+        points: 30,
+      },
+      {
+        name: "Recon Hunter",
+        restriction: "RAVENWING model only.",
+        effect: 'Models in the bearer\'s unit have the Scouts 9" ability.',
+        points: 20,
+      },
+    ],
+    stratagems: [
+      {
+        name: "Hunter's Trail",
+        cost: "1CP",
+        category: "Strategic Ploy",
+        when: "Command phase.",
+        target:
+          "One RAVENWING MOUNTED unit from your army that is within range of an objective marker you control.",
+        effect:
+          "That objective marker remains under your control until your opponent's Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+      ARMOUR_OF_CONTEMPT_RULE(),
+      {
+        name: "Talon Strike",
+        cost: "1CP",
+        category: "Strategic Ploy",
+        when: "Fight phase, when a friendly ADEPTUS ASTARTES unit is selected to fight.",
+        target: "That ADEPTUS ASTARTES unit.",
+        effect: "Your unit's melee attacks have [LANCE].",
+      },
+      {
+        name: "Death on the Wind",
+        cost: "1CP",
+        category: "Battle Tactic",
+        when: "Your Movement phase, when a friendly ADEPTUS ASTARTES unit ends an advance move.",
+        target: "That ADEPTUS ASTARTES unit.",
+        effect:
+          "That advance move does not prevent your unit from being eligible to declare a charge.",
+      },
+      {
+        name: "High-speed Focus",
+        cost: "1CP",
+        category: "Battle Tactic",
+        when: "Your opponent's Shooting phase, just after an enemy unit has selected its targets.",
+        target:
+          "One RAVENWING unit from your army that was selected as the target of one or more of the attacking unit's attacks.",
+        effect:
+          "Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.",
+      },
+      {
+        name: "Rapid Reappraisal",
+        cost: "1CP",
+        category: "Battle Tactic",
+        when: "End of your opponent's Fight phase.",
+        target:
+          "One RAVENWING unit from your army that is not within Engagement Range of one or more enemy units.",
+        effect:
+          "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    ],
+  },
+  {
+    id: "inner-circle-task-force",
+    name: "Inner Circle Task Force",
+    tagline:
+      "Deathwing Terminators who swear an oath upon a single objective and hold it against anything the enemy sends.",
+    primaryObjective: "priority-assets",
+    detachmentPoints: 2,
+    restrictions: CHAPTER_RESTRICTION,
+    rules: [
+      {
+        name: "Vowed Target",
+        effect:
+          "At the start of your Movement phase, select one of the following:\nDefensive Footing: Select one objective you control. Until the start of your next Movement phase, that objective is your Vowed objective.\nAggressive Push: Select one or more objective you do not control. Until the start of your next Movement phase, each of those objectives is one of your Vowed objectives. If a rule refers to a unit or model being within range of your Vowed objective, that rule takes effect if that unit or model is within range of one or more of your Vowed objectives. Each time a DEATHWING INFANTRY unit from your army makes an attack that targets a unit within range of one or more of your Vowed objectives, add 1 to the Wound roll.",
+      },
+    ],
+    enhancements: [
+      {
+        name: "Champion of the Deathwing",
+        restriction: "DEATHWING model only.",
+        effect:
+          "Melee weapons equipped by the bearer have the [LETHAL HITS] ability, and each time the bearer makes a melee attack, if it is within range of your Vowed objective marker, a Critical Hit is scored on an unmodified Hit roll of 5+.",
+        points: 15,
+      },
+      {
+        name: "Deathwing Assault",
+        restriction: "DEATHWING model with the Deep Strike ability only.",
+        effect:
+          "The bearer's unit can be set up using the Deep Strike ability in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules.",
+        points: 30,
+      },
+      {
+        name: "Eye of the Unseen",
+        restriction: "DEATHWING model only.",
+        effect:
+          "Each time you target the bearer's unit with a Stratagem, roll one D6, adding 1 if the bearer is within range of your Vowed objective marker: on a 5+, you gain 1CP.",
+        points: 10,
+      },
+      {
+        name: "Singular Will",
+        restriction: "DEATHWING model only.",
+        effect:
+          'Each time the bearer\'s unit Piles In or Consolidates, models in that unit can move an additional 3".',
+        points: 20,
+      },
+    ],
+    stratagems: [
+      ARMOUR_OF_CONTEMPT_RULE(),
+      {
+        name: "Martial Mastery",
+        cost: "1CP",
+        category: "Epic Deed",
+        when: "Fight phase.",
+        target:
+          "One DEATHWING INFANTRY unit from your army that has not been selected to fight this phase.",
+        effect:
+          "Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit is within range of your Vowed objective marker, you can re-roll the Wound roll instead.",
+      },
+      {
+        name: "Duty Unto Death",
+        cost: "1CP",
+        category: "Strategic Ploy",
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target:
+          "One DEATHWING unit from your army that was selected as the target of one or more of the attacking unit's attacks.",
+        effect:
+          "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 if your unit is within range of your Vowed objective marker. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+      {
+        name: "Relic Teleportarium",
+        cost: "1CP",
+        category: "Strategic Ploy",
+        when: "Your Movement phase.",
+        target:
+          "One DEATHWING unit from your army that is arriving using the Deep Strike ability this phase.",
+        effect:
+          'Your unit can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy models.',
+        restrictions:
+          "Until the end of the turn, your unit is not eligible to declare a charge.",
+      },
+      {
+        name: "Wrath of the Lion",
+        cost: "1CP",
+        category: "Epic Deed",
+        when: "Your Charge phase.",
+        target:
+          "One DEATHWING INFANTRY unit from your army that just ended a Charge move.",
+        effect:
+          "Select one enemy unit within Engagement Range of your unit and roll one D6 for each model in your unit, adding 1 to the result if that enemy unit is within range of your Vowed objective marker: for each 4+, that enemy unit suffers 1 mortal wound (to a maximum of 3 mortal wounds).",
+      },
+      {
+        name: "Unmatched Fortitude",
+        cost: "1CP",
+        category: "Battle Tactic",
+        when: "Your opponent's Shooting phase, just after an enemy unit has selected its targets.",
+        target:
+          "One DEATHWING INFANTRY unit from your army that was selected as the target of one or more of the attacking unit's attacks.",
+        effect:
+          "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than your unit's Toughness characteristic, subtract 1 from the Wound roll.",
+      },
+    ],
+  },
+  {
+    id: "unforgiven-task-force",
+    name: "Unforgiven Task Force",
+    tagline:
+      "Battle-brothers who fight all the harder as their losses mount, refusing to yield an inch of ground.",
+    primaryObjective: "take-and-hold",
+    detachmentPoints: 2,
+    restrictions: CHAPTER_RESTRICTION,
+    rules: [
+      {
+        name: "Grim Resolve",
+        effect:
+          "While an ADEPTUS ASTARTES unit from your army is Battle-shocked, change the Objective Control characteristic of models in that unit to 1, instead of 0.\nIn your Command phase, select one ADEPTUS ASTARTES unit from your army; until the start of your next Command phase, add 1 to the Objective Control characteristic of models in that unit.",
+      },
+    ],
+    enhancements: [
+      {
+        name: "Pennant of Remembrance",
+        restriction: "ANCIENT model only.",
+        effect:
+          "While the bearer is leading a unit, models in that unit have the Feel No Pain 6+ ability. While that unit is Battle-shocked, models in that unit have the Feel No Pain 4+ ability instead.",
+        points: 10,
+      },
+      {
+        name: "Shroud of Heroes",
+        restriction: "ADEPTUS ASTARTES model only. (Once per battle, per army)",
+        effect:
+          "When this model is destroyed, at the end of the phase, roll one D6:\nOn a 2+, set up this model on the battlefield, unengaged and as close as possible to where it was destroyed. This model is not part of an attached unit and its unit has a starting strength of 1. This model has 3 wounds remaining, or its full wounds remaining if this model was battle-shocked when it was destroyed.",
+        points: 25,
+      },
+      {
+        name: "Stubborn Tenacity",
+        restriction: "ADEPTUS ASTARTES model only.",
+        effect:
+          "While the bearer is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Battle-shocked and below its Starting Strength.",
+        points: 15,
+      },
+      {
+        name: "Weapons of the First Legion",
+        restriction: "ADEPTUS ASTARTES model only.",
+        effect:
+          "Add 1 to the Attacks, Strength and Damage characteristics of the bearer's melee weapons. While the bearer is Battle-shocked, add 2 to the Attacks, Strength and Damage characteristics of the bearer's melee weapons instead.",
+        points: 15,
+      },
+    ],
+    stratagems: [
+      ARMOUR_OF_CONTEMPT_RULE(),
+      {
+        name: "Unforgiven Fury",
+        cost: "1CP",
+        category: "Battle Tactic",
+        when: "Your Shooting phase or the Fight phase.",
+        target:
+          "One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.",
+        effect:
+          "Until the end of the phase, weapons equipped by models in your unit have the [LETHAL HITS] ability. In addition, if one or more ADEPTUS ASTARTES units from your army are currently Battle-shocked, until the end of the phase, each time a model in your unit makes an attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.",
+      },
+      {
+        name: "Intractable",
+        cost: "1CP",
+        category: "Strategic Ploy",
+        when: "Your Movement phase, just after an ADEPTUS ASTARTES unit from your army Falls Back.",
+        target: "That ADEPTUS ASTARTES unit.",
+        effect:
+          "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+      {
+        name: "Fire Discipline",
+        cost: "1CP",
+        category: "Battle Tactic",
+        when: "Your Shooting phase.",
+        target:
+          "One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.",
+        effect:
+          "Until the end of the phase, ranged weapons equipped by models in your unit have the [ASSAULT], [HEAVY] and [IGNORES COVER] abilities.",
+      },
+      {
+        name: "Grim Retribution",
+        cost: "1CP",
+        category: "Strategic Ploy",
+        when: "Your opponent's Shooting phase, just after an enemy unit has shot.",
+        target:
+          "One ADEPTUS ASTARTES unit from your army that had one or more models destroyed as a result of the attacking unit's attacks.",
+        effect:
+          "Your unit can shoot as if it were your Shooting phase, but it must target only the enemy unit that just attacked it, and can only do so if that enemy unit is an eligible target.",
+      },
+      {
+        name: "Unbreakable Lines",
+        cost: "2CP",
+        category: "Battle Tactic",
+        when: "Your opponent's Charge phase, just after an enemy unit ends a Charge move.",
+        target:
+          "One ADEPTUS ASTARTES unit from your army within Engagement Range of that enemy unit.",
+        effect:
+          "Until the end of the turn, each time an attack targets your unit, subtract 1 from the Wound roll.",
+      },
+    ],
+  },
 ];
