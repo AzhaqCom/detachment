@@ -54,7 +54,9 @@ export function DetachmentPage() {
             <p className="detail-description">{detachment.description}</p>
           )}
           {detachment.restrictions && (
-            <p className="detail-restrictions">{detachment.restrictions}</p>
+            <div className="detail-restrictions">
+              <RulesText text={detachment.restrictions} />
+            </div>
           )}
         </header>
 
@@ -83,7 +85,9 @@ export function DetachmentPage() {
                   <h3>{enh.name}</h3>
                   <span className="points">{enh.points} pts</span>
                 </div>
-                <p className="restriction">{enh.restriction}</p>
+                <div className="restriction">
+                  <RulesText text={enh.restriction} />
+                </div>
                 {enh.effect && <RulesText text={enh.effect} />}
                 {enh.weaponProfile && (
                   <table className="weapon-table">

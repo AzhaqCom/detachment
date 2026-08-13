@@ -91,6 +91,19 @@
   margin-bottom: 0;
 }
 
+/* Keywords read as emphasis within their sentence, so only the weight changes. */
+.keyword {
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Field labels keep the accent colour; keywords inside them must not steal it. */
+.stratagem-card__field strong.keyword {
+  color: inherit;
+  letter-spacing: normal;
+  margin-right: 0;
+}
+
 .detachment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

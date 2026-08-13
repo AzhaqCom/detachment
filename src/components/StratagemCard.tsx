@@ -31,17 +31,17 @@ export function StratagemCard({ stratagem, detachmentName }: Props) {
         </div>
 
         <div className="stratagem-card__field">
-          <strong>WHEN:</strong> {stratagem.when}
+          <RulesText text={stratagem.when} lead="WHEN:" />
         </div>
         <div className="stratagem-card__field">
-          <strong>TARGET:</strong> {stratagem.target}
+          <RulesText text={stratagem.target} lead="TARGET:" />
         </div>
         <div className="stratagem-card__field">
           <RulesText text={stratagem.effect} lead="EFFECT:" />
         </div>
         {stratagem.restrictions && (
           <div className="stratagem-card__field stratagem-card__restrictions">
-            <strong>RESTRICTIONS:</strong> {stratagem.restrictions}
+            <RulesText text={stratagem.restrictions} lead="RESTRICTIONS:" />
           </div>
         )}
       </div>

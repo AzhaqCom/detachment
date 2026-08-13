@@ -27,12 +27,49 @@ function isLabel(candidate: string): boolean {
   });
 }
 
+/**
+ * Matches a bracketed weapon ability, or a run of upper-case words — the form
+ * GW prints unit keywords in ("ADEPTUS ASTARTES INFANTRY", "MOB/KOMMANDOS",
+ * "VON RYAN'S LEAPERS", "TYRANID WARRIORS WITH RANGED BIO-WEAPONS").
+ */
+const KEYWORD_RUN =
+  /\[[^\]]*\]|\b[A-Z]{2,}(?:['-][A-Z]+)*(?:[ /][A-Z]{2,}(?:['-][A-Z]+)*)*\b/g;
+
+/** Characteristic shorthands, not keywords: "-1 CP", "+1 AP", "improve its BS". */
+const SHORTHAND = new Set(["CP", "AP", "WS", "BS", "OC", "DP", "HP"]);
+
+/** Sets unit keywords in bold, leaving [WEAPON ABILITIES] and shorthands alone. */
+function highlight(text: string): ReactNode {
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+
+  for (const match of text.matchAll(KEYWORD_RUN)) {
+    const token = match[0];
+    const start = match.index;
+    if (start > cursor) nodes.push(text.slice(cursor, start));
+    cursor = start + token.length;
+
+    if (token.startsWith("[") || SHORTHAND.has(token)) {
+      nodes.push(token);
+    } else {
+      nodes.push(
+        <strong className="keyword" key={start}>
+          {token}
+        </strong>,
+      );
+    }
+  }
+
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes.length === 1 ? nodes[0] : nodes;
+}
+
 function Line({ text }: { text: string }): ReactNode {
   const match = text.match(LABEL);
-  if (!match || !isLabel(match[1])) return text;
+  if (!match || !isLabel(match[1])) return highlight(text);
   return (
     <>
-      <strong>{match[1]}:</strong> {match[2]}
+      <strong>{match[1]}:</strong> {highlight(match[2])}
     </>
   );
 }
