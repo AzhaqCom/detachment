@@ -7,17 +7,7 @@ import {
 } from "../data/factions";
 import { useDetachments } from "../hooks/useDetachments";
 import { StratagemCard } from "../components/StratagemCard";
-
-function TextBlock({ text }: { text: string }) {
-  const paragraphs = text.split("\n").filter(Boolean);
-  return (
-    <>
-      {paragraphs.map((p, i) => (
-        <p key={i}>{p}</p>
-      ))}
-    </>
-  );
-}
+import { RulesText } from "../components/RulesText";
 
 export function DetachmentPage() {
   const { factionId: param, id } = useParams();
@@ -73,13 +63,13 @@ export function DetachmentPage() {
           {detachment.rules.map((rule) => (
             <div className="rule-block" key={rule.name}>
               <h3>{rule.name}</h3>
-              <TextBlock text={rule.effect} />
+              <RulesText text={rule.effect} />
             </div>
           ))}
           {detachment.keywordsNote && (
             <div className="rule-block">
               <h3>Mots-clés</h3>
-              <TextBlock text={detachment.keywordsNote} />
+              <RulesText text={detachment.keywordsNote} />
             </div>
           )}
         </section>
@@ -94,7 +84,7 @@ export function DetachmentPage() {
                   <span className="points">{enh.points} pts</span>
                 </div>
                 <p className="restriction">{enh.restriction}</p>
-                {enh.effect && <TextBlock text={enh.effect} />}
+                {enh.effect && <RulesText text={enh.effect} />}
                 {enh.weaponProfile && (
                   <table className="weapon-table">
                     <thead>

@@ -1,6 +1,7 @@
 import type { Stratagem } from "../types/detachment";
 import { getStratagemCategory } from "../data/stratagemCategories";
 import { StratagemIcon } from "./StratagemIcon";
+import { RulesText } from "./RulesText";
 
 interface Props {
   stratagem: Stratagem;
@@ -36,7 +37,7 @@ export function StratagemCard({ stratagem, detachmentName }: Props) {
           <strong>TARGET:</strong> {stratagem.target}
         </div>
         <div className="stratagem-card__field">
-          <strong>EFFECT:</strong> {stratagem.effect}
+          <RulesText text={stratagem.effect} lead="EFFECT:" />
         </div>
         {stratagem.restrictions && (
           <div className="stratagem-card__field stratagem-card__restrictions">
